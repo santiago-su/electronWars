@@ -11,7 +11,7 @@ app.on('ready', () => {
     resizable: false
   })
 
-  win.loadURL(`file://${__dirname}/app/login.html`)
+  win.loadURL(`file://${__dirname}/app/index.html`)
 
   win.on('closed', () => {
     win = null
