@@ -1,14 +1,15 @@
 const $ = require('jQuery');
-const rp = require('request-promise');
 const Config = require('electron-config');
 const config = new Config();
+var markdown = require("markdown").markdown;
 
 let nextKata = config.get('nextKata')
 
 exports.populateNextKata = function() {
-  console.log(nextKata);
+  let description = markdown.toHTML(nextKata.description);
+  $(".divide-line").removeClass('hidden');
   $(".next-kata-details").removeClass('hidden');
   $("#kata-name").append(nextKata.name);
   $("#kata-rank").append(nextKata.rank);
-  $("#kata-description").append(nextKata.description);
+  $("#kata-description").append(description);
 }

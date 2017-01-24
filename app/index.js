@@ -1,4 +1,5 @@
 const $ = require('jQuery');
+const {ipcRenderer} = require('electron')
 const Config = require('electron-config');
 const config = new Config();
 const api = require('./js/api.js');
@@ -6,6 +7,7 @@ const populateUser = require('./js/user-details.js');
 const nextKata = require('./js/next-kata-details.js');
 
 let signInBtn = $('#getUserBtn');
+let trainBtn = $('#train-next');
 
 function hideElement(element) {
   $(element).addClass('hidden');
@@ -28,7 +30,6 @@ signInBtn.on('click', (e) => {
     return api.getNextKata();
   })
   .then(data => {
-    console.log(data);
     config.set('nextKata', data);
     nextKata.populateNextKata();
   })
@@ -36,4 +37,8 @@ signInBtn.on('click', (e) => {
     config.set('errors', err);
     // TODO: HANDLE ERRORS
   });
+})
+
+trainBtn.on('click', (e) => {
+  ipcRenderer.send('openREPL', "something")
 })
