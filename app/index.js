@@ -1,5 +1,6 @@
 const $ = require('jQuery');
-const {ipcRenderer} = require('electron')
+const BrowserWindow = require('electron').remote.BrowserWindow;
+const path = require('path');
 const Config = require('electron-config');
 const config = new Config();
 const api = require('./js/api.js');
@@ -40,5 +41,9 @@ signInBtn.on('click', (e) => {
 })
 
 trainBtn.on('click', (e) => {
-  ipcRenderer.send('openREPL', "something")
+  const modalPath = path.join('file://', __dirname, './text_editor.html');
+  let win = new BrowserWindow({ frame: false });
+  win.on('close', function() { win = null });
+  win.loadURL(modalPath);
+  win.show();
 })
