@@ -41,7 +41,6 @@ function makeRequest(method, route, postData) {
     }
 
     req.on('error', function(err) {
-      console.log('https error! %s: %s', err.name, err.message);
       reject(err);
     });
 

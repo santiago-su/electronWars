@@ -5,6 +5,7 @@ const api = require('./js/api.js');
 const nextKata = require('./js/next-kata-details.js');
 const js = require("../cm/mode/javascript/javascript");
 const codeMirror = require("../cm/lib/codemirror");
+const remote = require('electron').remote;
 
 api.startNextKata()
 .then(kata => {
@@ -34,7 +35,7 @@ $("#test-kata").on('click', () => {
     return api.getDeferredResponse(response.dmid)
   })
   .then((data) => {
-    $(".test-results").html(data.output[0]);
+    $(".test-results").html(data.output['0']);
     if (data.valid == false) {
       console.log(data)
       $(".test-results").removeClass('hidden');
@@ -53,7 +54,8 @@ $("#test-kata").on('click', () => {
 $("#submit-kata").on('click', () => {
   api.finalSolution(config.get('finalProjectId'), config.get('finalSolutionId'))
   .then(() => {
-    console.log('finally')
+    var window = remote.getCurrentWindow();
+    window.close()
   })
   .catch(err => {
     // TODO: HANDLE ERRORS

@@ -1,7 +1,6 @@
 const $ = require('jQuery');
 
 exports.populateUserDetails = function(user) {
-  console.log(user)
   let badge = `<img src='https://www.codewars.com/users/${user.username}/badges/large'>`
   $(".user-details").removeClass('hidden');
   $(".user-details").prepend(badge);
