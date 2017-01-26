@@ -36,7 +36,6 @@ No tests
 ## TODOS
 * Handle errors
 * Compare user solutions
-* Package application
 * Create a traybar menu for app
 * Save and persist user credentials on user's computer and search for them whenever they start the application
 * Create a menu bar
