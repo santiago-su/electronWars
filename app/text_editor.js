@@ -19,30 +19,41 @@ api.startNextKata()
   // TODO: HANDLE ERRORS
 })
 
+
+//////////////////// HTML INTERACTION ///////////////////////////
+
 let cm = codeMirror.fromTextArea(document.getElementById("editor"), {
   mode: {name: "javascript", json: true },
   lineNumbers: true,
   theme: "lesser-dark"
 });
 
-console.log(config.get('nextKata'))
-
 $("#test-kata").on('click', () => {
   api.testNextKata(config.get('nextKata'),cm.getValue())
   .then(response => {
-    console.log(response)
     return api.getDeferredResponse(response.dmid)
   })
   .then((data) => {
-    console.log(data)
     $(".test-results").html(data.output[0]);
     if (data.valid == false) {
-      console.log(data.output[0]);
+      console.log(data)
       $(".test-results").removeClass('hidden');
     } else {
-      config.set('correctSolutionId', data.solution_id);
+      console.log(data)
+      config.set('finalProjectId', config.get('nextKata').session.projectId)
+      config.set('finalSolutionId', data.solution_id);
       $("#submit-kata").attr('disabled', false)
     }
+  })
+  .catch(err => {
+    // TODO: HANDLE ERRORS
+  })
+})
+
+$("#submit-kata").on('click', () => {
+  api.finalSolution(config.get('finalProjectId'), config.get('finalSolutionId'))
+  .then(() => {
+    console.log('finally')
   })
   .catch(err => {
     // TODO: HANDLE ERRORS

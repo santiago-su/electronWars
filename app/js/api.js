@@ -97,3 +97,11 @@ exports.getDeferredResponse = function(dmid) {
     }, FREQUENCY);
   });
 };
+
+
+// POST https://www.codewars.com/api/v1/code-challenges/projects/:project_id/solutions/:solution_id/finalize
+exports.finalSolution = function(projectId, solutionId) {
+  let method = 'POST';
+  let route = `/code-challenges/projects/${projectId}/solutions/${solutionId}/finalize`
+  return makeRequest(method, route);
+}
