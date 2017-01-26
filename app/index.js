@@ -26,11 +26,11 @@ signInBtn.on('click', (e) => {
     config.set('user', user);
     hideElement('.user-login');
     populateUser.populateUserDetails(user);
-    api.getNextKata();
+    return api.getNextKata();
   })
   .then(data => {
     config.set('nextKata', data);
-    nextKata.populateNextKata();
+    return nextKata.populateNextKata();
   })
   .catch(err => {
     config.set('errors', err);

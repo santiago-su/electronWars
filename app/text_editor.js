@@ -52,7 +52,7 @@ $("#test-kata").on('click', () => {
 $("#submit-kata").on('click', () => {
   api.finalSolution(config.get('finalProjectId'), config.get('finalSolutionId'))
   .then(() => {
-    var window = remote.getCurrentWindow();
+    let window = remote.getCurrentWindow();
     window.close()
   })
   .catch(err => {
