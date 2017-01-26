@@ -25,10 +25,8 @@ signInBtn.on('click', (e) => {
   .then(user => {
     config.set('user', user);
     hideElement('.user-login');
-    populateUser.populateUserDetails();
-  })
-  .then(() => {
-    return api.getNextKata();
+    populateUser.populateUserDetails(user);
+    api.getNextKata();
   })
   .then(data => {
     config.set('nextKata', data);
@@ -42,7 +40,7 @@ signInBtn.on('click', (e) => {
 
 trainBtn.on('click', (e) => {
   const modalPath = path.join('file://', __dirname, './text_editor.html');
-  let win = new BrowserWindow({ frame: false });
+  let win = new BrowserWindow({ frame: false, backgroundColor: '#303133' });
   win.on('close', function() { win = null });
   win.loadURL(modalPath);
   win.show();

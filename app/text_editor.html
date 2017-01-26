@@ -18,23 +18,23 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="next-kata-details-editor hidden">
-            <b><h3 class="stat kata-name-editor"></h3></b>
+            <b><h5 class="stat kata-name-editor"></h5></b>
             <div class="stat kata-rank-editor"><b>Rank:</b></div>
             <div class="stat kata-description-editor"><b>Description:</b></div>
           </div>
         </div>
-        <textarea class="col-sm-6" id="editor">
-        </textarea>
+        <div class="col-sm-6">
+          <textarea id="editor">
+          </textarea>
+          <div id="submit-kata-buttons">
+            <button id="test-kata" class="btn btn-lg btn-primary btn-block">Test</button>
+            <button id="submit-kata" class="btn btn-lg btn-primary btn-block" disabled>Submit</button>
+          </div>
+          <div class="test-results hidden">
+          </div>
+        </div>
       </div>
     </div>
     <script src="text_editor.js"></script>
-    <script>
-      // let editor = CodeMirror(document.getElementById('editor'),
-      //   {
-          // mode: {name: "javascript", json: true },
-          // lineNumbers: true,
-          // theme: "lesser-dark"
-      //   });
-    </script>
   </body>
 </html>

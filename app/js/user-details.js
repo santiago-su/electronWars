@@ -1,10 +1,6 @@
 const $ = require('jQuery');
-const Config = require('electron-config');
-const config = new Config();
 
-let user = config.get('user')
-
-exports.populateUserDetails = function() {
+exports.populateUserDetails = function(user) {
   console.log(user)
   let badge = `<img src='https://www.codewars.com/users/${user.username}/badges/large'>`
   $(".user-details").removeClass('hidden');

@@ -42,7 +42,7 @@ b {
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
+.form-signin {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -56,4 +56,24 @@ b {
 .stat {
   letter-spacing: 0.5px;
   margin-right: 15px;
+}
+
+#submit-kata-buttons {
+  margin-top: 20px;
+}
+
+.next-kata-details-editor {
+  font-size: 10px;
+}
+
+.test-results {
+  background-color: black;
+}
+
+.console-failed {
+  color: red;
+}
+
+.console-passed {
+  color: green;
 }
