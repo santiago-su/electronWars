@@ -36,9 +36,8 @@ $("#test-kata").on('click', () => {
   })
   .then((data) => {
     $(".test-results").html(data.output['0']);
-    if (data.valid == false) {
-      $(".test-results").removeClass('hidden');
-    } else {
+    $(".test-results").removeClass('hidden');
+    if (data.valid == true) {
       config.set('finalProjectId', config.get('nextKata').session.projectId)
       config.set('finalSolutionId', data.solution_id);
       $("#submit-kata").attr('disabled', false)
